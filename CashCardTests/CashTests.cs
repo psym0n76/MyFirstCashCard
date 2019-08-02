@@ -38,6 +38,18 @@ namespace CashCardTests
             });
         }
 
+
+        [Test]
+        [TestCase(1231, 20)]
+        public void Should_throw_exception_when_withdrawing_more_than_allowed(int pin, double amount)
+        {
+            Should.Throw<ArgumentException>(() =>
+            {
+                var result = new CashCard();
+                result.Withdrawal(pin, 20);
+            });
+        }
+
         [Test]
         [TestCase(1234, 20)]
         public void Should_deposit_with_correct_pin(int pin, double amount)
